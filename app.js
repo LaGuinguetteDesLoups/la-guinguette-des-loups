@@ -46,69 +46,88 @@ document.addEventListener("DOMContentLoaded", function () {
   const videoPopup = document.getElementById("video-popup");
   const closeVideoBtn = document.getElementById("close-video-popup");
   const videoElement = document.getElementById("presentation-video");
-  const unmuteBtn = document.getElementById("unmute-video");
+  const loader = document.getElementById("video-loader");
+
+  const invite = document.getElementById("video-invite");
+  const inviteYes = document.getElementById("video-invite-yes");
+  const inviteClose = document.getElementById("video-invite-close");
 
   if (!videoPopup || !closeVideoBtn || !videoElement) return;
 
-  let soundUnlocked = false;
+  let loaderTimeout = null;
 
-  function updateUnmuteButton() {
-    if (!unmuteBtn) return;
-    unmuteBtn.classList.toggle("hidden", !videoElement.muted);
-    unmuteBtn.textContent = videoElement.muted
-      ? "🔇 Activer le son"
-      : "🔊 Couper le son";
+  function showInvite() {
+    if (!invite) return;
+    setTimeout(() => invite.classList.remove("hidden"), 1500);
   }
 
-  function unlockSound() {
-    if (soundUnlocked || !videoElement) return;
-    soundUnlocked = true;
-    videoElement.muted = false;
-    videoElement.volume = 1;
-    videoElement.play().catch(() => {});
-    updateUnmuteButton();
-    events.forEach((e) => window.removeEventListener(e, unlockSound));
+  function hideInvite() {
+    if (!invite) return;
+    invite.classList.add("hidden");
   }
 
-  const events = [
-    "click",
-    "touchstart",
-    "keydown",
-    "scroll",
-    "mousemove",
-    "pointerdown",
-  ];
-
-  function armSoundUnlock() {
-    if (soundUnlocked) return;
-    events.forEach((e) =>
-      window.addEventListener(e, unlockSound, { passive: true })
-    );
+  function hideLoader() {
+    if (!loader) return;
+    loader.classList.add("hidden");
+    clearTimeout(loaderTimeout);
   }
 
   function openVideoPopup() {
     videoPopup.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
     videoElement.currentTime = 0;
-    videoElement.muted = true;
-    updateUnmuteButton();
+    videoElement.muted = false;
+    videoElement.volume = 1;
 
-    videoElement
-      .play()
-      .then(() => {
-        armSoundUnlock();
-      })
-      .catch((error) => {
-        console.log("La lecture automatique a été bloquée par le navigateur.");
-      });
+    if (loader) {
+      loader.classList.remove("hidden");
+      loaderTimeout = setTimeout(hideLoader, 6000);
+    }
+
+    const playPromise = videoElement.play();
+
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          if (videoElement.readyState >= 3) hideLoader();
+        })
+        .catch(() => {
+          videoElement.muted = true;
+          videoElement
+            .play()
+            .then(() => {
+              if (videoElement.readyState >= 3) hideLoader();
+            })
+            .catch(() => {
+              hideLoader();
+            });
+        });
+    }
   }
 
   function closeVideoPopup() {
     videoPopup.classList.add("hidden");
+    document.body.style.overflow = "";
     videoElement.pause();
     videoElement.currentTime = 0;
+    hideLoader();
   }
 
-  setTimeout(openVideoPopup, 1000);
+  videoElement.addEventListener("canplay", hideLoader);
+  videoElement.addEventListener("playing", hideLoader);
+  videoElement.addEventListener("loadeddata", hideLoader);
+  videoElement.addEventListener("ended", closeVideoPopup);
+
+  if (invite && inviteYes && inviteClose) {
+    showInvite();
+
+    inviteYes.addEventListener("click", function () {
+      hideInvite();
+      openVideoPopup();
+    });
+
+    inviteClose.addEventListener("click", hideInvite);
+  }
 
   closeVideoBtn.addEventListener("click", closeVideoPopup);
 
@@ -118,39 +137,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  if (unmuteBtn) {
-    unmuteBtn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      videoElement.muted = !videoElement.muted;
-      if (!videoElement.muted) {
-        videoElement.play().catch(() => {});
-      }
-      soundUnlocked = true;
-      updateUnmuteButton();
-    });
-  }
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && !videoPopup.classList.contains("hidden")) {
+      closeVideoPopup();
+    }
+  });
 
   videoElement.addEventListener("error", function () {
-    console.error("Erreur de chargement de la vidéo :", videoElement.error);
-    if (videoElement.error) {
-      switch (videoElement.error.code) {
-        case 1:
-          console.error("Téléchargement interrompu.");
-          break;
-        case 2:
-          console.error(
-            "Erreur réseau : le fichier est introuvable. Vérifiez le chemin (dossier public ?)."
-          );
-          break;
-        case 3:
-          console.error(
-            "Erreur de décodage : le format de la vidéo n'est pas supporté par le navigateur."
-          );
-          break;
-        case 4:
-          console.error("Format non supporté ou fichier corrompu.");
-          break;
-      }
-    }
+    hideLoader();
   });
 });
