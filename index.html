@@ -368,25 +368,57 @@
       </div>
     </section>
 
+    <div id="video-invite" class="video-invite hidden">
+      <button
+        id="video-invite-close"
+        class="video-invite-close"
+        aria-label="Fermer"
+        type="button"
+      >
+        &times;
+      </button>
+      <div class="video-invite-icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="11" fill="var(--rouge)" stroke="var(--ink)" stroke-width="2" />
+          <path d="M10 8l6 4-6 4V8z" fill="var(--cream)" />
+        </svg>
+      </div>
+      <div class="video-invite-text">
+        <strong>Découvrez la Guinguette</strong>
+        <span>En 2 minutes, en vidéo 🐺</span>
+      </div>
+      <div class="video-invite-actions">
+        <button id="video-invite-yes" class="video-invite-yes" type="button">
+          ▶ Voir la vidéo
+        </button>
+      </div>
+    </div>
+
     <div id="video-popup" class="video-popup-overlay hidden">
       <div class="video-popup-content">
+        <div class="video-popup-header">
+          <div class="title">
+            <span class="dot"></span>
+            <span>La Guinguette des Loups</span>
+          </div>
+        </div>
+
         <button id="close-video-popup" class="video-popup-close" aria-label="Fermer la vidéo">&times;</button>
+
+        <div id="video-loader" class="video-popup-loader">
+          <div class="spinner"></div>
+          <div class="label">Chargement…</div>
+        </div>
 
         <video
           id="presentation-video"
           controls
-          autoplay
-          muted
           playsinline
           preload="auto"
         >
           <source src="./public/V1-Guingette-compresser.mp4" type="video/mp4" />
           Votre navigateur ne supporte pas la lecture de vidéos.
         </video>
-
-        <button id="unmute-video" class="video-unmute hidden" type="button">
-          🔊 Activer le son
-        </button>
       </div>
     </div>
 
