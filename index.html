@@ -1,12 +1,383 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>La Guinguette des Loups</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <meta
+      name="description"
+      content="Concerts, ateliers, marché local et ouverture exceptionnelle du parc à loups. Un moment convivial au cœur du refuge du Nouvel Animal."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/png" href="./public/loup-sur-colline.png" />
+  </head>
+
+  <body>
+    <button class="back-to-top" aria-label="Retour en haut">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <polyline points="18 15 12 9 6 15" />
+      </svg>
+    </button>
+    <header class="nav">
+      <div class="logo">
+        <img
+          src="./public/wolf-badge.png"
+          alt="logo de la Guinguette des Loups"
+        />
+      </div>
+
+      <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links">
+        <a href="#jour-j">Le jour J</a>
+        <a href="#parc">Le parc</a>
+        <a href="#mission">Mission</a>
+        <a href="#copains">Copains</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section id="top" class="hero">
+      <svg class="cloud cloud1 drift" viewBox="0 0 120 50">
+        <path
+          d="M20 40 Q5 40 10 25 Q5 10 25 12 Q35 0 55 8 Q75 -2 85 12 Q110 8 110 28 Q115 42 95 42 Z"
+        />
+      </svg>
+      <svg class="cloud cloud2 drift" viewBox="0 0 120 50">
+        <path
+          d="M20 40 Q5 40 10 25 Q5 10 25 12 Q35 0 55 8 Q75 -2 85 12 Q110 8 110 28 Q115 42 95 42 Z"
+        />
+      </svg>
+      <div class="container hero-content">
+        <p class="kicker"><span class="wiggle ink-stroke">Bienvenue à</span></p>
+        <h1>LA GUINGUETTE<br /><span class="rouge">DES LOUPS</span></h1>
+        <div class="where">📍 À MEILLAC, EN BRETAGNE</div>
+        <div class="ctas">
+          <a
+            class="btn red"
+            target="_blank"
+            rel="noreferrer"
+            href="https://laguinguettedesloups.s2.yapla.com/fr/accueil/register/la-guinguette-des-loups/114297"
+            >● Je m'inscris</a
+          >
+          <a class="btn cream" target="_blank" rel="noreferrer" href="https://laguinguettedesloups.s2.yapla.com/fr/">Voir le programme</a>
+        </div>
+        <p class="sub">
+          Concerts · Ateliers · Marché Local · Ouverture exceptionnelle du parc
+          à loups
+        </p>
+      </div>
+      <img class="img" src="public/hero-scene.jpg" />
+    </section>
+
+    <div class="marquee">
+      <div class="track">
+        <span>★ CONCERTS LIVE</span><span>★ MARCHÉ D'ARTISANS</span
+        ><span>★ PARC À LOUPS</span><span>★ RESTAURATION SUR PLACE</span
+        ><span>★ ATELIERS</span> <span>★ CONCERTS LIVE</span
+        ><span>★ MARCHÉ D'ARTISANS</span><span>★ PARC À LOUPS</span
+        ><span>★ RESTAURATION SUR PLACE</span><span>★ ATELIERS</span>
+      </div>
+    </div>
+
+    <section id="jour-j">
+      <div class="container grid2">
+        <div>
+          <span class="pill pill-sun">LE JOUR J</span>
+          <h2 class="mt-1rem">
+            UNE JOURNÉE<br /><span class="rouge">PAS COMME</span><br />LES
+            AUTRES.
+          </h2>
+          <div class="lead">
+            <p>
+              Une parenthèse joyeuse au plus près des loups : musique vivante,
+              artisans d'ici et grands espaces partagés, en soutien au refuge.
+            </p>
+            <p>
+              Au programme : des <strong>concerts d'artistes locaux</strong>, un
+              <strong>marché d'artisans</strong>, des animations et de quoi se
+              restaurer sur place dans une ambiance simple et chaleureuse.
+            </p>
+            <p>
+              Et toute la journée, le refuge ouvre exceptionnellement ses portes
+              — une occasion rare de visiter le parc à loups.
+            </p>
+          </div>
+        </div>
+        <div class="img-frame float">
+          <img
+            src="public/concert-scene.jpg"
+            alt="Concert sur la scène de la Guinguette"
+          />
+          <div
+            class="badge badge-top-left badge-rouge"
+          >
+            ♫ LIVE
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="programme">
+      <div class="container">
+        <div class="head">
+          <h2 class="sun">AU PROGRAMME.</h2>
+          <p class="max-28rem font-1-1rem">
+            Trois bonnes raisons (au moins) de venir traîner par chez nous.
+          </p>
+        </div>
+        <div class="grid3">
+          <article class="card">
+            <div class="pic">
+              <img src="public/marche.jpg" alt="Marché d'artisans" />
+            </div>
+            <div class="body">
+              <span class="pill pill-sun align-start">ARTISANS</span>
+              <h3>Marché d'artisans</h3>
+              <p>
+                Artisans locaux, producteurs, créateurs : un marché vivant à
+                ciel ouvert.
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="pic">
+              <img src="public/concert-scene.jpg" alt="Concerts d'ici" />
+            </div>
+            <div class="body">
+              <span class="pill pill-rouge align-start">SCÈNE</span>
+              <h3>Concerts d'ici</h3>
+              <p>
+                La scène locale prend les commandes : folk, chanson, électro
+                douce.
+              </p>
+            </div>
+          </article>
+          <article class="card">
+            <div class="pic">
+              <img src="public/parc-loups.png" alt="Parc à loups" />
+            </div>
+            <div class="body">
+              <span class="pill pill-cream align-start">NATURE</span>
+              <h3>Parc à loups</h3>
+              <p>
+                Visite exceptionnelle du sanctuaire et de ses pensionnaires.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="parc">
+      <div class="container grid5">
+        <div class="img-frame float">
+          <img
+            src="public/wolf-portrait.jpg"
+            alt="Portrait d'un loup du refuge"
+          />
+          <div
+            class="badge badge-bottom-right badge-sun"
+          >
+            AOUUU !
+          </div>
+        </div>
+        <div>
+          <span class="pill pill-rouge">PORTES OUVERTES</span>
+          <h2 class="mt-1rem">
+            UN SANCTUAIRE,<br /><span class="rouge">PAS UN ZOO.</span>
+          </h2>
+          <div class="lead">
+            <p>
+              Le parc à loups et refuge animalier ouvre exceptionnellement ses
+              portes au public. Habituellement fermé, ce lieu chargé de
+              l'histoire du spectacle animalier est aujourd'hui un sanctuaire
+              privé, dédié au bien-être des animaux.
+            </p>
+            <p>
+              Ici, pas de décor superflu : chaque espace a été pensé uniquement
+              pour leur offrir les meilleures conditions de vie.
+            </p>
+            <p>
+              Pour poursuivre sa mission, le refuge a besoin de soutien. C'est
+              pourquoi il vous accueille, le temps d'une journée riche en
+              découvertes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mission" class="mission">
+      <div class="container">
+        <span class="pill pill-cream pill-ink">NOTRE MISSION</span>
+        <h2>ON FAIT LA FÊTE,<br />ET ON FAIT LE BIEN.</h2>
+        <p>
+          La Guinguette des Loups soutient le refuge du
+          <strong>Nouvel Animal</strong> afin d'améliorer l'accueil des animaux,
+          ainsi que <strong>le Voisinage</strong>, pour développer un studio
+          d'enregistrement accessible aux artistes locaux.
+        </p>
+        <a
+          class="btn cream mt-2rem"
+          href="https://laguinguettedesloups.s2.yapla.com/fr/notre-mission"
+          >En savoir plus →</a
+        >
+      </div>
+    </section>
+
+    <section id="copains" class="copains">
+      <div class="container">
+        <div class="head">
+          <h2 class="rouge">NOS COPAINS.</h2>
+          <p class="max-28rem font-1-1rem">
+            Ils nous filent un coup de patte pour faire de cette journée un vrai
+            moment.
+          </p>
+        </div>
+        <div class="copains-grid">
+          <div class="card copain">
+            <div class="emoji">🎧</div>
+            <div class="name">DJ Bruno</div>
+          </div>
+          <div class="card copain">
+            <div class="emoji">🏛️</div>
+            <div class="name">Mairie de Meillac</div>
+          </div>
+          <div class="card copain">
+            <div class="emoji">🎤</div>
+            <div class="name">Emossion</div>
+          </div>
+          <div class="card copain">
+            <div class="emoji">🐺</div>
+            <div class="name">Le Nouvel Animal</div>
+          </div>
+          <div class="card copain">
+            <div class="emoji">🌾</div>
+            <div class="name">Patrimoine Vivant Breton</div>
+          </div>
+          <div class="card copain">
+            <div class="emoji">🎶</div>
+            <div class="name">Le Voixinage</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="container grid">
+        <div>
+          <div class="brand">
+            <img src="./public/evenement-a-meillac.png" 
+              alt="Logo de la Guinguette des Loups"
+            />
+            <span>LA GUINGUETTE<br />DES LOUPS</span>
+          </div>
+          <p class="mt-1rem color-footer max-20rem">
+            Une parenthèse joyeuse au plus près des loups – musique vivante,
+            artisans locaux, grands espaces partagés – pour soutenir le refuge.
+          </p>
+        </div>
+        <div>
+          <h3>Nous suivre</h3>
+          <ul>
+            <li>
+              <a
+                href="https://www.facebook.com/people/La-Guinguette-des-Loups/61573675011412/"
+                >→ Facebook</a
+              >
+            </li>
+            <li>
+              <a href="https://www.instagram.com/laguinguettedesloups"
+                >→ Instagram</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/showcase/la-guinguette-des-loups"
+                >→ LinkedIn</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <ul>
+            <li>📞 06 67 37 21 71</li>
+            <li>
+              ✉
+              <a
+                href="mailto:guinguettedesloups@gmail.com"
+                class="underline"
+                >guinguettedesloups@gmail.com</a
+              >
+            </li>
+            <li>📍 87 Le Bourgneuf, 35270 Meillac</li>
+          </ul>
+        </div>
+      </div>
+      <div class="bottom">
+        © SCRIPT_YEAR La Guinguette des Loups — Fait avec ♥ en Bretagne par
+        <a href="https://github.com/ATN35" target="_blank">Antoine le stagiaire</a>
+        — <a href="#mentions-legales" class="underline">Mentions légales &amp; RGPD</a>
+      </div>
+    </footer>
+
+    <section id="mentions-legales" class="mentions-legales hidden">
+      <div class="container">
+        <button class="close-mentions" aria-label="Fermer">&times;</button>
+        <h2>Mentions légales &amp; RGPD</h2>
+        <h3>Éditeur du site</h3>
+        <p>
+          <strong>Association Le Nouvel Animal</strong><br>
+          87 Le Bourgneuf, 35270 Meillac<br>
+          Email : guinguettedesloups@gmail.com<br>
+          SIREN : 899 999 999 (exemple)
+        </p>
+        <h3>Hébergement</h3>
+        <p>
+          Hébergeur : OVH SAS, 2 rue Kellermann, 59100 Roubaix, France<br>
+          Tél : 1007
+        </p>
+        <h3>Protection des données personnelles (RGPD)</h3>
+        <p>
+          Les informations collectées via le formulaire d'inscription sont utilisées uniquement pour la gestion de l'événement et ne sont jamais revendues. Vous disposez d'un droit d'accès, de rectification et de suppression de vos données en écrivant à <a href="mailto:guinguettedesloups@gmail.com" class="underline">guinguettedesloups@gmail.com</a>.<br>
+          Aucun cookie de suivi n'est utilisé à des fins publicitaires. Seuls les cookies nécessaires au bon fonctionnement du site sont déposés.
+        </p>
+        <h3>Crédits</h3>
+        <p>
+          Illustrations, textes et photos : La Guinguette des Loups &amp; partenaires.<br>
+          Développement : Antoine le stagiaire.
+        </p>
+      </div>
+    </section>
+    
+    <div id="video-popup" class="video-popup-overlay hidden">
+      <div class="video-popup-content">
+        <button id="close-video-popup" class="video-popup-close" aria-label="Fermer la vidéo">&times;</button>
+        <video id="presentation-video" controls autoplay playsinline>
+          <source src="./public/V1-Guingette-compresser.mp4" type="video/mp4" />
+          Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+      </div>
+    </div>
+
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
